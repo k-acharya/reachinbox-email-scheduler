@@ -6,4 +6,5 @@ export const bullmqConnection: ConnectionOptions = {
   port: env.REDIS_PORT,
   password: env.REDIS_PASSWORD || undefined,
   maxRetriesPerRequest: null,
+  ...(env.REDIS_HOST.includes('upstash.io') ? { tls: {} } : {}),
 };
